@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/db.changelog_0.0_set_database_character_encoding_and_collation.xml
+  - include:
+      file: db/changelog/db.changelog_0.1_create_table_oauth_client_token.xml
+  - include:
+      file: db/changelog/db.changelog_0.2_create_table_oauth_client_details.xml
+  - include:
+      file: db/changelog/db.changelog_0.3_create_table_oauth_access_token.xml
+  - include:
+      file: db/changelog/db.changelog_0.4_create_table_oauth_refresh_token.xml
+  - include:
+      file: db/changelog/db.changelog_0.5_create_table_authority.xml
+  - include:
+      file: db/changelog/db.changelog_0.6_create_table_credentials.xml
+  - include:
+      file: db/changelog/db.changelog_0.7_create_table_credentials_authorities.xml
+  - include:
+      file: db/changelog/db.changelog_0.8_create_table_oauth_code.xml
+  - include:
+      file: db/changelog/db.changelog_0.9_create_table_oauth_approvals.xml
+  - include:
+      file: db/changelog/db.changelog_0.10_enable_admin_user.xml
+  - include:
+      file: db/changelog/db.changelog_0.14_create_table_forget_password.xml
+
+
+

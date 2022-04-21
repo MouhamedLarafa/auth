@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="10102010160009" author="oauth">
+        <createTable tableName="oauth_approvals">
+            <column name="userId" type="varchar(255)"/>
+            <column name="clientId" type="varchar(255)"/>
+            <column name="scope" type="varchar(255)"/>
+            <column name="status" type="varchar(10)"/>
+            <column name="expiresAt" type="DATETIME"/>
+            <column name="lastModifiedAt" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

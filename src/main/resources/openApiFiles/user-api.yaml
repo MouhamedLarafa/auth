@@ -1,0 +1,336 @@
+openapi: 3.0.2
+info:
+  title: user-api
+  version: 1.0.0
+  description: doc api micro sevice user
+paths:
+  '/roles/{roleId}':
+    summary: Path used to manage a single Role.
+    description: >-
+      The REST endpoint/path used to get, update, and delete single instances of an `Role`.  This path
+      contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
+      respectively.
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorityDto'
+          description: Successful response - returns a single `Role`.
+      operationId: getRole
+      summary: Get a Role
+      description: Gets the details of a single instance of a `Role`.
+    delete:
+      responses:
+        '204':
+          description: Successful response.
+      operationId: deleteRole
+      summary: Delete a Role
+      description: Deletes an existing `Role`.
+    parameters:
+      -
+        name: roleId
+        description: A unique identifier for a `Role`.
+        schema:
+          format: int64
+          type: integer
+        in: path
+        required: true
+  /roles:
+    summary: Path used to manage the list of roles.
+    description: >-
+      The REST endpoint/path used to list and create zero or more `Role` entities.  This path contains a
+      `GET` and `POST` operation to perform the list and create tasks, respectively.
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthorityDto'
+          description: Successful response - returns an array of `Role` entities.
+      operationId: getRoles
+      summary: List All Roles
+      description: Gets a list of all `Role` entities.
+    put:
+      requestBody:
+        description: Updated `Role` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorityDto'
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorityDto'
+          description: Successful response.
+      operationId: updateRole
+      summary: Update a Role
+      description: Updates an existing `Role`.
+    post:
+      requestBody:
+        description: A new `Role` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorityDto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorityDto'
+          description: Successful response.
+      operationId: createRole
+      summary: Create a Role
+      description: Creates a new instance of a `Role`.
+  '/persons/resetPassword/{userId}':
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPassword'
+      responses:
+        '200':
+          description: user password updated successfully !
+      operationId: resetPassword
+    parameters:
+      -
+        name: userId
+        schema:
+          format: int64
+          type: integer
+        in: path
+        required: true
+  '/forgetPassword/{email}':
+    get:
+      responses:
+        '200':
+          description: Email found
+        '404':
+          description: |
+            Email Not Found !
+      operationId: forgetPasswordUsingEmail
+    parameters:
+      -
+        name: email
+        schema:
+          type: string
+        in: path
+        required: true
+  '/forgetPassword/verifyToken/{uuid}':
+    get:
+      responses:
+        '200':
+          description: Token valid
+        '404':
+          description: token not found or expired
+      operationId: verifierToken
+    parameters:
+      -
+        name: uuid
+        schema:
+          type: string
+        in: path
+        required: true
+  /: {}
+  '/forgetPassword/resetPassword/{uuid}':
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: reset password success
+        '404':
+          description: reset password failed
+      operationId: resetPwd
+    parameters:
+      -
+        name: uuid
+        schema:
+          type: string
+        in: path
+        required: true
+  /persons:
+    summary: Path used to manage the list of people.
+    description: >-
+      The REST endpoint/path used to list and create zero or more `Person` entities.  This path contains
+      a `GET` and `POST` operation to perform the list and create tasks, respectively.
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CredentialsDto'
+          description: Successful response - returns an array of `Person` entities.
+      operationId: getPeople
+      summary: List All People
+      description: Gets a list of all `Person` entities.
+    post:
+      requestBody:
+        description: A new `Person` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialsDto'
+        required: false
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsDto'
+          description: Successful response.
+      operationId: createPerson
+      summary: Create a Person
+      description: Creates a new instance of a `Person`.
+  '/persons/{personId}':
+    summary: Path used to manage a single Person.
+    description: >-
+      The REST endpoint/path used to get, update, and delete single instances of an `Person`.  This path
+      contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks,
+      respectively.
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsDto'
+          description: Successful response - returns a single `Person`.
+      operationId: getPerson
+      summary: Get a Person
+      description: Gets the details of a single instance of a `Person`.
+    put:
+      requestBody:
+        description: Updated `Person` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialsDto'
+        required: true
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsDto'
+          description: Successful response.
+      operationId: updatePerson
+      summary: Update a Person
+      description: Updates an existing `Person`.
+    delete:
+      responses:
+        '204':
+          description: Successful response.
+      operationId: deletePerson
+      summary: Delete a Person
+      description: Deletes an existing `Person`.
+    parameters:
+      -
+        name: personId
+        description: A unique identifier for a `Person`.
+        schema:
+          format: int64
+          type: integer
+        in: path
+        required: true
+components:
+  schemas:
+    ResetPassword:
+      title: Root Type for ResetPassword
+      description: ''
+      type: object
+      properties:
+        currentPassword:
+          type: string
+        newPassword:
+          type: string
+      example:
+        currentPassword: old password
+        newPassword: new password
+    AuthorityDto:
+      title: Root Type for Role
+      description: role model DTO
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        authority:
+          type: string
+      example:
+        idDTO: 1
+        roleDTO: ADMIN
+    ForgetPasswordDto:
+      title: Root Type for ForgetPassword
+      description: '    '
+      type: object
+      properties:
+        uuid:
+          type: string
+        email:
+          type: string
+        date:
+          format: date-time
+          type: string
+      example:
+        uuid: azeaze
+        email: eaze@gmail.com
+        date: '2022-03-25 16:48:21'
+    CredentialsDto:
+      title: Root Type for Person
+      description: Person Model DTO
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        password:
+          type: string
+        role:
+          description: ''
+          type: array
+          items:
+            $ref: '#/components/schemas/AuthorityDto'
+        name:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        enabled:
+          description: ''
+          type: boolean
+      example:
+        idDTO: 1
+        emailDTO: example@exemple.com
+        locationDTO: Paris
+        passwordDTO: sdckl1 !!
+        firstNameDTO: cherif
+        lastNameDTO: cherif
+        birthdateDTO: 98799
+        preferredLanguageDTO:
+          - français
+        nationalityDTO:
+          - tunisian
+        mobilePhoneNumberDTO: 20000000
+        homePhoneNumberDTO: 71000000
+        imageDTO: url_image
+        companyArrivedDateDTO: 7877788
+        graduationDTO:
+          - senior

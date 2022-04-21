@@ -1,0 +1,26 @@
+server:
+  port: 8181
+  servlet:
+    context-path: /uaa
+
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+
+spring:
+  application:
+    name: auth
+  profiles:
+    active: dev
+  jpa:
+    show-sql: false
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      ddl-auto: none
+    open-in-view: false

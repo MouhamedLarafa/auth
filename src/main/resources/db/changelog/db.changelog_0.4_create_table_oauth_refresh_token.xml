@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="10102010160004" author="oauth">
+        <createTable tableName="oauth_refresh_token">
+            <column name="token_id" type="varchar(255)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="token" type="LONGBLOB"/>
+            <column name="authentication" type="LONGBLOB"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

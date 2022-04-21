@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="03092021145900" author="oauth">
+        <update tableName="credentials">
+            <column name="enabled" valueBoolean="true"/>
+            <where>name = 'admin'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>
