@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CustomOauth2FeignRequestInterceptor implements RequestInterceptor {
     private static final String AUTHORIZATION_HEADER = "Authorization";
     @Override
+    // hedha il intercepte les requette feign (men aand les micro services lokhrin) : injecte l token fl requettes li kharjin
     public void apply(RequestTemplate requestTemplate) {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (requestAttributes == null) {

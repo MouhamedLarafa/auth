@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum ResponseCode {
+    // edhouma les exception li bsh ykharejhom globalexceptionhandler
 
     ROLE_NOT_FOUND("ROLE NOT FOUND"),
     S_ROLE_DELETED("ROLE SUCCESSFULLY DELETED"),

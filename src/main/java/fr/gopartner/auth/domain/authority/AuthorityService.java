@@ -1,11 +1,10 @@
 package fr.gopartner.auth.domain.authority;
 
-import fr.gopartner.auth.core.exceptions.NotFoundException;
-import fr.gopartner.auth.core.rest.ResponseCode;
 import fr.gopartner.auth.model.AuthorityDto;
 import org.springframework.stereotype.Service;
+import fr.gopartner.auth.core.exceptions.NotFoundException;
+import fr.gopartner.auth.core.rest.ResponseCode;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

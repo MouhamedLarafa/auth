@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthorityMapper {
     public AuthorityDto toDto(Authority authority) {
-        if(authority == null){
-            return null ;
+        if (authority == null) {
+            return null;
         }
         AuthorityDto authorityDto = new AuthorityDto();
         authorityDto.setId(authority.getId());
@@ -16,8 +16,8 @@ public class AuthorityMapper {
     }
 
     public Authority toAuthority(AuthorityDto roleDto) {
-        if(roleDto == null){
-            return null ;
+        if (roleDto == null) {
+            return null;
         }
         return Authority.builder()
                 .id(roleDto.getId())

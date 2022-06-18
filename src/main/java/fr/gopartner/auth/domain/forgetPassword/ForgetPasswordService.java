@@ -2,7 +2,6 @@ package fr.gopartner.auth.domain.forgetPassword;
 
 import fr.gopartner.auth.core.exceptions.NotFoundException;
 import fr.gopartner.auth.core.rest.ResponseCode;
-import fr.gopartner.auth.domain.credentials.Credentials;
 import fr.gopartner.auth.domain.forgetPassword.notification.Notification;
 import fr.gopartner.auth.domain.forgetPassword.notification.NotificationType;
 import org.springframework.stereotype.Service;

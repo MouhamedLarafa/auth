@@ -316,6 +316,9 @@ components:
         enabled:
           description: ''
           type: boolean
+        numTelDto:
+          description: ''
+          type: integer
       example:
         idDTO: 1
         emailDTO: example@exemple.com

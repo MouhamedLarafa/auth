@@ -12,6 +12,20 @@ logging:
     org.springframework.security.oauth2: DEBUG
 
 spring:
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          timeout: '5000'
+          auth: 'true'
+          connectiontimeout: '5000'
+          writetimeout: '5000'
+    host: smtp.gmail.com
+    username: larafamouhamed5@gmail.com
+    password: kyfsiqudrustwfns
+    port: '587'
   application:
     name: auth
   profiles:

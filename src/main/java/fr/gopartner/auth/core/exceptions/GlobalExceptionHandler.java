@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
+//hedha li bsh yhandel ay haja msh meshya shhyha w ykharjelna l message liu nhebou aalih aaleh l fjeya3
 public class GlobalExceptionHandler {
     @ExceptionHandler
+    // yhandli 3aala 7asb el type (lezem l exception tkoun runtime exeption)
     public ResponseEntity<ServerResponse> handleNoTFoundException(NotFoundException exception){
         ServerResponse serverResponse = ServerResponse.builder()
                 .message(exception.getMessage())

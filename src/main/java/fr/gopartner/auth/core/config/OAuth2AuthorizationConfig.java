@@ -43,16 +43,19 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     private CredentialsRepository credentialsRepository;
 
     @Bean
+    //authentification mta3 application cliente
     public JdbcClientDetailsService clientDetailsService2() {
         return new JdbcClientDetailsService(dataSource);
     }
 
     @Bean
+    // gestion mta3 les token
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
     }
 
     @Bean
+    // convertion mtaa l token li jena bel secret key
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("123456");
@@ -70,6 +73,7 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     }
 
     @Override
+    // bsh n9oulou lel auth2 esta3ml l instance clientDetailsService2 houni
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(clientDetailsService2());
     }
@@ -79,6 +83,7 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
     }
 
     @Override
+    //les api mta3 l'interaction m3a l serveur d'autorisation (oauth2)
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(new CustomTokenEnhancer(credentialsRepository), accessTokenConverter()));

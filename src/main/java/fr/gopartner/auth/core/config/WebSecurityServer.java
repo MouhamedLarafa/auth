@@ -11,13 +11,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityServer extends WebSecurityConfigurerAdapter {
 
+    private static final String[] authIgnore = {"/swagger-ui.html"};
     private UserDetailsService userDetailsService;
-   // private CorsConfiguration corsConfiguration;
+    //private CorsConfiguration corsConfiguration;
 
     public WebSecurityServer(CustomUserDetailsService userDetailsService) {
       //  this.corsConfiguration = cors;
@@ -25,6 +27,7 @@ public class WebSecurityServer extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    //fama des path ma7loulin meghyr authentification w wahdin le
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:offs
         http
@@ -37,15 +40,14 @@ public class WebSecurityServer extends WebSecurityConfigurerAdapter {
         // @formatter:on
     }
    @Override
+   // ignore les paths li ktebnehom lenna
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers("/forgetPassword/resetPassword/**")
-                .antMatchers("/forgetPassword/verifyToken/**")
-                .antMatchers("/forgetPassword/**")
-                .antMatchers("/persons");
+                .antMatchers(authIgnore);
     }
 
     @Override
+    //hedha li yaaaml authentification mta3 l user
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());

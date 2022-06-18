@@ -33,6 +33,9 @@ public class Credentials implements Serializable {
     @Column(unique = true)
     private String email;
 
+    @Column(name = "num_tel")
+    private String numTel;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "credentials_authorities",
             joinColumns = {

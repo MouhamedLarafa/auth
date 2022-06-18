@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 @Service
 public class CredentialsMapper {
 
-    private final AuthorityMapper authorityMapper ;
+    private final AuthorityMapper authorityMapper;
 
     public CredentialsMapper(AuthorityMapper authorityMapper) {
         this.authorityMapper = authorityMapper;
     }
 
-    public Credentials toPerson(CredentialsDto credentialsDto){
-        if(credentialsDto == null){
-            return  null ;
+    public Credentials toPerson(CredentialsDto credentialsDto) {
+        if (credentialsDto == null) {
+            return null;
         }
 
         return Credentials.builder()
@@ -31,7 +31,7 @@ public class CredentialsMapper {
                 .build();
     }
 
-    public CredentialsDto toDto(Credentials credentials){
+    public CredentialsDto toDto(Credentials credentials) {
         CredentialsDto credentialsDto = new CredentialsDto();
         credentialsDto.setId(credentials.getId());
         credentialsDto.setEmail(credentials.getEmail());
@@ -40,6 +40,6 @@ public class CredentialsMapper {
         credentialsDto.setName(credentials.getName());
         credentialsDto.setPassword(credentials.getPassword());
         credentialsDto.setRole(credentials.getAuthorities().stream().map(authorityMapper::toDto).collect(Collectors.toList()));
-        return credentialsDto ;
+        return credentialsDto;
     }
 }
